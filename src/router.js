@@ -26,7 +26,7 @@ export default new Router({
             component: Stocks
         },
         {
-            path: '/protfolio',
+            path: '/portfolio',
             name: 'portfolio',
             component: Portfolio
         }

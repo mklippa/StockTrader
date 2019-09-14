@@ -8,16 +8,19 @@
       <!-- <li style="cursor:pointer">Portfolio</li>
       <li style="cursor:pointer">Stocks</li> -->
     </ul>
+    <button @click="endDay">End Day</button>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
+
 
 export default {
   methods: {
-    ...mapGetters(['funds'])
+    ...mapGetters(['funds']),
+    ...mapMutations(['endDay'])
   }
 }
 </script>

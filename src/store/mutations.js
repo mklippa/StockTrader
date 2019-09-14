@@ -23,5 +23,16 @@ export default {
         alert('Invalid operation');
       }
     }
+  },
+  endDay: state => {
+    state.stocks.forEach(stock => {
+      const plus = Math.random() >= 0.5;
+      const value = Math.round(Math.random() * 20)
+      if (plus) {
+        stock.price += value;
+      } else {
+        stock.price = Math.max(stock.price - value, 0);
+      }
+    });
   }
 }

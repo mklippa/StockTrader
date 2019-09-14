@@ -1,26 +1,39 @@
 <template>
   <div>
-    <h1>{{item.name}} (Price: {{item.price}} | Quantity: {{item.quantity}})</h1>
+    <h1>{{title}}</h1>
     <input
-      type="text"
+      type="number"
       placeholder="Quantity"
       v-model="quantity"
     >
-    <button @click="sell">Sell</button>
+    <button @click="sellHandler">Sell</button>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: ['item'],
-  data() {
+  data () {
     return {
       quantity: 0
     }
   },
+  computed: {
+    title () {
+      return `${this.item.name} (Price: ${this.price()} | Quantity: ${this.item.quantity})`;
+    }
+  },
   methods: {
-    sell() {
-      this.$emit('sell');
+    ...mapActions(['sell']),
+    sellHandler () {
+      this.sell({
+        name: this.item.name,
+        quantity: this.quantity
+      });
+    },
+    price () {
+      return this.$store.getters.price(this.item.name);
     }
   }
 }

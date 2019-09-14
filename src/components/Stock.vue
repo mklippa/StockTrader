@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{stock.name}} (Price: {{stock.price}})</h1>
+    <h1>{{title}}</h1>
     <input
       type="number"
       placeholder="Quantity"
@@ -17,6 +17,11 @@ export default {
   data () {
     return {
       quantity: 0
+    }
+  },
+  computed: {
+    title () {
+      return `${this.stock.name} (Price: ${this.stock.price})`;
     }
   },
   methods: {

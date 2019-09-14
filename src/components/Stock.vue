@@ -2,15 +2,16 @@
   <div>
     <h1>{{stock.name}} (Price: {{stock.price}})</h1>
     <input
-      type="text"
+      type="number"
       placeholder="Quantity"
       v-model="quantity"
     >
-    <button @click="buy">Buy</button>
+    <button @click="buyHandler">Buy</button>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: ['stock'],
   data () {
@@ -19,8 +20,12 @@ export default {
     }
   },
   methods: {
-    buy () {
-
+    ...mapActions(['buy']),
+    buyHandler () {
+      this.buy({
+        name: this.stock.name,
+        quantity: this.quantity
+      });
     }
   }
 }

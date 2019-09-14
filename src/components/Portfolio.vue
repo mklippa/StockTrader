@@ -1,7 +1,20 @@
 <template>
-    <div>
-        <h1>BNW (Price: 110 | Quantity: 10)</h1>
-        <input type="text" placeholder="Quantity">
-        <button>Sell</button>
-    </div>
+  <div>
+    <app-item
+      v-for="(item,i) in portfolio"
+      :key="i"
+      :item="item"
+    ></app-item>
+  </div>
 </template>
+
+<script>
+import Item from './Item.vue'
+import { mapGetters } from "vuex";
+export default {
+  components: {
+    appItem: Item
+  },
+  computed: mapGetters(['portfolio'])
+}
+</script>

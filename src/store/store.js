@@ -1,9 +1,11 @@
 import Vue from "vue"
 import Vuex from "vuex"
 
+import getters from './getters'
+
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     stocks: [
       {
@@ -24,5 +26,8 @@ export default new Vuex.Store({
       },
     ],
     portfolio: []
-  }
+  },
+  getters,
+  // mutations,
+  // actions
 })

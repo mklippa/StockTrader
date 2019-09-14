@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>Funds: ${{funds()}}</p>
     <ul>
       <!-- <li style="cursor:pointer">Stock Trader</li> -->
       <router-link to="/stocks">Stocks</router-link>
@@ -12,9 +13,12 @@
 </template>
 
 <script>
-
+import { mapGetters } from "vuex";
 
 export default {
+  methods: {
+    ...mapGetters(['funds'])
+  }
 }
 </script>
 

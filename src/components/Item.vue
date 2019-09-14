@@ -4,13 +4,24 @@
     <input
       type="text"
       placeholder="Quantity"
+      v-model="quantity"
     >
-    <button>Buy</button>
+    <button @click="sell">Sell</button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['item']
+  props: ['item'],
+  data() {
+    return {
+      quantity: 0
+    }
+  },
+  methods: {
+    sell() {
+      this.$emit('sell');
+    }
+  }
 }
 </script>

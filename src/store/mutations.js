@@ -34,5 +34,11 @@ export default {
         stock.price = Math.max(stock.price - value, 0);
       }
     });
+  },
+  updateStocks: (state, payload) => {
+    state.stocks = payload;
+  },
+  updatePortfolio: (state, payload) => {
+    state.portfolio = payload;
   }
 }

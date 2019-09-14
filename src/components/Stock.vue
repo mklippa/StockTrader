@@ -13,14 +13,14 @@
 <script>
 export default {
   props: ['stock'],
-  data() {
+  data () {
     return {
       quantity: 0
     }
   },
   methods: {
-    buy() {
-      this.$emit('buy')
+    buy () {
+
     }
   }
 }

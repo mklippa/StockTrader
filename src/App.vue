@@ -1,17 +1,55 @@
 <template>
-  <div>
-    <p>Funds: ${{funds()}}</p>
-    <ul>
-      <!-- <li style="cursor:pointer">Stock Trader</li> -->
-      <router-link to="/stocks">Stocks</router-link>
-      <router-link to="/portfolio">Portfolio</router-link>
-      <!-- <li style="cursor:pointer">Portfolio</li>
-      <li style="cursor:pointer">Stocks</li> -->
-    </ul>
-    <button @click="endDay">End Day</button>
-    <button @click="save">Save</button>
-    <button @click="load">Load</button>
-    <router-view></router-view>
+  <div class="row app-header">
+    <div class="col-xs-10 col-xs-offset-1">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <router-link
+            class="navbar-brand"
+            to="/"
+            exact
+          >Stock Trader</router-link>
+        </div>
+        <div
+          class="collapse navbar-collapse"
+          id="bs-example-navbar-collapse-1"
+        >
+          <ul class="nav navbar-nav">
+            <router-link
+              to="/stocks"
+              tag="li"
+            ><a href="">Stocks</a></router-link>
+            <router-link
+              to="/portfolio"
+              tag="li"
+            ><a href="">Portfolio</a></router-link>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a
+                class="end-day"
+                @click="endDay"
+              >End Day</a></li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >Save & Load <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Action</a></li>
+                <!-- <li><a href="#">Another action</a></li> -->
+              </ul>
+            </li>
+            <p class="navbar-text"><b>Funds: {{funds()}}</b></p>
+          </ul>
+        </div>
+        <!-- <button @click="save">Save</button>
+        <button @click="load">Load</button> -->
+      </nav>
+      <router-view class="row"></router-view>
+    </div>
   </div>
 </template>
 
@@ -49,5 +87,11 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
+.end-day {
+  cursor: pointer;
+}
+.app-header {
+  padding-top: 30px;
+}
 </style>

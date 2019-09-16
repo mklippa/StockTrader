@@ -1,12 +1,25 @@
 <template>
-  <div>
-    <h1>{{title}}</h1>
-    <input
-      type="number"
-      placeholder="Quantity"
-      v-model="quantity"
-    >
-    <button @click="buyHandler">Buy</button>
+  <div class="col-xs-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{title}}</h3>
+      </div>
+      <div class="panel-body">
+        <form class="form-inline" submit="false">
+          <input
+            class="form-control"
+            type="number"
+            placeholder="Quantity"
+            v-model="quantity"
+          >
+          <button
+            class="btn btn-success pull-right"
+            type="button"
+            @click="buyHandler"
+          >Buy</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,7 +29,7 @@ export default {
   props: ['stock'],
   data () {
     return {
-      quantity: 0
+      quantity: undefined
     }
   },
   computed: {
@@ -27,6 +40,10 @@ export default {
   methods: {
     ...mapActions(['buy']),
     buyHandler () {
+      if (!this.quantity) {
+        return;
+      }
+
       this.buy({
         name: this.stock.name,
         quantity: this.quantity

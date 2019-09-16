@@ -11,6 +11,6 @@ export default {
       const stock = state.stocks.find(s => s.name === item.name);
       sum += stock.price * item.quantity;
     });
-    return sum;
+    return `$${Number(sum).toLocaleString('en')}`;
   }
 }

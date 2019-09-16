@@ -24,9 +24,7 @@
             ><a href="">Portfolio</a></router-link>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a
-                @click="endDay"
-              >End Day</a></li>
+            <li><a @click="endDay">End Day</a></li>
             <li class="dropdown">
               <a
                 href="#"
@@ -45,7 +43,9 @@
           </ul>
         </div>
       </nav>
-      <router-view class="row"></router-view>
+      <transition name="slide" mode="out-in">
+        <router-view class="row"></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -90,5 +90,38 @@ a {
 }
 .app-header {
   padding-top: 30px;
+}
+
+.slide-enter {
+  opacity: 0;
+}
+
+.slide-enter-active {
+  animation: slide-in .5s;
+  transition: opacity .5s;
+}
+
+.slide-leave-active {
+  animation: slide-out .5s;
+  transition: opacity .5s;
+  opacity: 0;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
 }
 </style>

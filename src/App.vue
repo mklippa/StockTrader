@@ -25,7 +25,6 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a
-                class="end-day"
                 @click="endDay"
               >End Day</a></li>
             <li class="dropdown">
@@ -38,15 +37,13 @@
                 aria-expanded="false"
               >Save & Load <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a>Action</a></li>
-                <!-- <li><a href="#">Another action</a></li> -->
+                <li><a @click="save">Save</a></li>
+                <li><a @click="load">Load</a></li>
               </ul>
             </li>
             <p class="navbar-text"><b>Funds: {{funds()}}</b></p>
           </ul>
         </div>
-        <!-- <button @click="save">Save</button>
-        <button @click="load">Load</button> -->
       </nav>
       <router-view class="row"></router-view>
     </div>
@@ -88,7 +85,7 @@ export default {
 </script>
 
 <style scope>
-.end-day {
+a {
   cursor: pointer;
 }
 .app-header {
